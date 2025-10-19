@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercito Italiano RolePlay | Forza, Onore, Patria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Header Sopra */
+        
+        :root {
+            --dark-green: #1a3a1a;
+            --medium-green: #2d5a2d;
+            --light-green: #3c6e3c;
+            --black: #121212;
+            --dark-gray: #333333;
+            --light-gray: #f0f0f0;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: var(--dark-green);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .logo h1 {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1600/900') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            overflow: hidden; /* Per assicurarsi che l'immagine non crei scrollbar */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/eiwall2.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay scuro per leggibilitÃ  */
+            z-index: 2;
+        }
+
+        .hero h2, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 3; /* Valore piÃ¹ alto per assicurarsi che siano sopra l'immagine e l'overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* footer sotto */
+
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #009246 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ce2b37 66.6%); /* Tricolore italiano */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: 165px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-green);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-documents h3 {
+            position: relative;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-documents h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-links ul, .footer-documents ul {
+            list-style: none;
+        }
+
+        .footer-links ul li, .footer-documents ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a, .footer-documents ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links ul li a i, .footer-documents ul li a i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links ul li a:hover, .footer-documents ul li a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info p span {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .contact-info p a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .join-now {
+            margin-top: 25px;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .join-button i {
+            margin-right: 8px;
+        }
+
+        .join-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-credentials {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .certifications span {
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .certifications span i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright p {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .copyright p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .certifications {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* Stili per la sezione Quiz */
+        .quiz-section {
+            background-color: var(--light-gray);
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .quiz-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+            position: relative;
+        }
+
+        .quiz-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        /* registrazion form */
+        .registration-form {
+            background-color: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-top: 5px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .registration-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--gold) 0%, transparent 60%);
+            opacity: 0.1;
+            border-radius: 0 0 0 100%;
+        }
+
+        .registration-form h3 {
+            color: var(--dark-green);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .registration-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group label::after {
+            content: '*';
+            color: #e74c3c;
+            margin-left: 3px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus {
+            border-color: var(--medium-green);
+            outline: none;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(255, 217, 0, 0.1);
+        }
+        
+        .form-group input:hover {
+            border-color: #bbb;
+        }
+        
+        #start-quiz-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            background-color: var(--gold);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        #start-quiz-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        #start-quiz-btn:hover::before {
+            left: 100%;
+        }
+        
+        #start-quiz-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .active {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--dark-green);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .quiz-timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .quiz-timer i {
+            color: var(--gold);
+            margin-right: 5px;
+        }
+
+        .quiz-progress {
+            font-size: 1.1rem;
+        }
+
+        .question-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #question-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        #question-image-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #question-image {
+            max-width: 100%;
+            border-radius: 4px;
+            max-height: 300px;
+        }
+
+        .answers-container {
+            display: grid;
+            grid-gap: 15px;
+        }
+
+        .answer-option {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .answer-option:hover {
+            border-color: var(--medium-green);
+            background-color: #f9f9f9;
+        }
+
+        .answer-option input[type="radio"] {
+            margin-right: 15px;
+        }
+
+        .answer-option label {
+            font-size: 1rem;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .nav-button {
+            background-color: var(--medium-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: var(--light-green);
+        }
+
+        #submit-quiz {
+            margin-left: auto;
+        }
+
+        .result-message {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .result-message i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        #success-message i {
+            color: #2ecc71;
+        }
+
+        #error-message i {
+            color: #e74c3c;
+        }
+
+        .result-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .result-message p {
+            color: #666;
+        }
+
+        /* Timer styling quando Ã¨ sotto 5 minuti */
+        .timer-warning {
+            color: #ff9800;
+            animation: pulse 1s infinite;
+        }
+
+        /* Timer styling quando Ã¨ sotto 1 minuto */
+        .timer-danger {
+            color: #f44336;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Stili per il modal della password - aggiungilo al tuo file CSS esistente */
+        .password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .password-modal {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: modalAppear 0.3s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .password-header {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .password-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .close-button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .password-content {
+            padding: 25px 20px;
+        }
+
+        .password-content p {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        #password-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        #password-input:focus {
+            border-color: var(--medium-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(45, 90, 45, 0.1);
+        }
+
+        .password-error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-bottom: 15px;
+            padding: 8px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .password-submit {
+            width: 100%;
+        }
+
+        /* Stili per l'autenticazione Discord e informazioni utente */
+
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="Logo Esercito Italiano Roleplay">
+            <h1>ESERCITO ITALIANO IRP</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#departments">Reparti</a></li>
+                <li><a href="#operations">Operazioni</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Esercito Italiano: Forza, Onore, Patria</h2>
+        <div class="hero-image">
+            <img src="image/nessuna.jpg" alt="Soldati dell'Esercito Italiano">
+        </div>
+        <p>Non aspettare che il cambiamento arrivi, diventa tu il cambiamento! La tua forza e il tuo impegno per il nostro Paese.</p>
+        <a href="#" class="cta-button">Unisciti Ora</a>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <h2>Quiz di Valutazione</h2>
+            
+            <!-- Registrazione -->
+            <div id="quiz-registration" class="active">
+                <div class="registration-form">
+                    <h3>Inserisci i tuoi dati per iniziare</h3>
+                    <form id="registration-form">
+                        <div class="form-group">
+                            <label for="fullName">Nome e Cognome*</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate">Data di Nascita*</label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Numero di Telefono*</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                        </div>
+                        <button type="submit" class="cta-button" id="start-quiz-btn">Inizia Test</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Quiz -->
+            <div id="quiz-container" class="hidden">
+                <div class="quiz-header">
+                    <div class="quiz-timer">
+                        <i class="fas fa-clock"></i> <span id="timer">30:00</span>
+                    </div>
+                    <div class="quiz-progress">
+                        <span id="current-question">1</span>/<span id="total-questions">0</span>
+                    </div>
+                </div>
+                
+                <div class="question-container">
+                    <div id="question-text"></div>
+                    <div id="question-image-container" class="hidden">
+                        <img id="question-image" src="" alt="Immagine della domanda">
+                    </div>
+                    <div class="answers-container">
+                        <div class="answer-option">
+                            <input type="radio" name="answer" id="option1" value="0">
+                            <label for="option1" id="option1-text"></label>
+                        </div>
+                        <div class="answer-option">
+                            <input type="radio" name="answer" id="option2" value="1">
+                            <label for="option2" id="option2-text"></label>
+                        </div>
+                        <div class="answer-option">
+                            <input type="radio" name="answer" id="option3" value="2">
+                            <label for="option3" id="option3-text"></label>
+                        </div>
+                        <div class="answer-option">
+                            <input type="radio" name="answer" id="option4" value="3">
+                            <label for="option4" id="option4-text"></label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button id="prev-question" class="nav-button">Domanda Precedente</button>
+                    <button id="next-question" class="nav-button">Domanda Successiva</button>
+                    <button id="submit-quiz" class="cta-button">Termina e Consegna</button>
+                </div>
+            </div>
+            
+            <!-- Risultato -->
+            <div id="quiz-result" class="hidden">
+                <div class="result-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Quiz inviato</h3>
+                    <p>Grazie per aver completato il test. I tuoi risultati sono stati registrati.</p>
+                </div>
+                <div class="result-message" id="error-message">
+                    <i class="fas fa-times-circle"></i>
+                    <h3>Quiz non inviato, contatta assistenza</h3>
+                    <p>Si Ã¨ verificato un errore durante l'invio del test. Per favore, contatta l'assistenza tecnica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <!-- Colonna Logo e Descrizione -->
+            <div class="footer-logo">
+                <img src="image/eiscritta.png" alt="Logo Esercito Italiano Roleplay">
+                <p>Il server roleplay dell'Esercito Italiano Ã¨ una comunitÃ  dedicata alla simulazione realistica dell'esperienza militare. Uniamoci nel nome dei valori di onore, coraggio e disciplina per servire con fedeltÃ  la Patria.</p>
+                <div class="social-icons">
+                    <a href="#" title="Discord" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Twitter" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+    
+            <!-- Colonna Link Utili -->
+            <div class="footer-links">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-users"></i> Chi Siamo</a></li>
+                    <li><a href="#departments"><i class="fa-solid fa-sitemap"></i> Reparti</a></li>
+                    <li><a href="#operations"><i class="fa-solid fa-map-marked-alt"></i> Operazioni</a></li>
+                    <li><a href="#gallery"><i class="fa-solid fa-images"></i> Galleria</a></li>
+                    <li><a href="EI Arruolamento.html"><i class="fa-solid fa-clipboard-list"></i> Bandi di Arruolamento</a></li>
+                    <li><a href="https://docs.google.com/document/d/1HS7zjOBHAq3Nzc1l16A2DtTTNv_p3o_QrKcdsaSXc5U/edit?usp=sharing"><i class="fa-solid fa-book"></i> Allegati Bando di Concorso</a></li>
+                    <li><a href="EI Gradi.html"><i class="fa-solid fa-medal"></i> Organigramma Esercito Italiano</a></li>
+                    <li><a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </div>
+    
+            <!-- Colonna Documenti -->
+            <div class="footer-documents">
+                <h3>Documenti Ufficiali</h3>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Percorsi Formativi</a></li>
+                    <li><a href="#"><i class="fa-solid fa-history"></i> Storia dell'Esercito</a></li>
+                    <li><a href="EI Minnesota.html"><i class="fa-solid fa-history"></i> Test Psicologico</a></li>
+                </ul>
+            </div>
+    
+            <!-- Colonna Contatti -->
+            <div class="footer-contact">
+                <h3>Contattaci</h3>
+                <div class="contact-info">
+                    <p><i class="fa-brands fa-discord"></i> <span>Discord:</span> <a href="https://discord.gg/AMyUmbFwgq" target="_blank">EsercitoItalianoRP</a></p>
+                    <p><i class="fa-solid fa-envelope"></i> <span>Email:</span> <a href="mail:silvercri793@esercitoitalianorp.it">info@esercitoitalianoirp.it</a></p>
+                    <p><i class="fa-solid fa-calendar-check"></i> <span>Addestramenti:</span> Martedì, Giovedì, Sabato</p>
+                    <p><i class="fa-solid fa-bullhorn"></i> <span>Reclutamenti:</span> Lunedì, Venerdì</p>
+                </div>
+                <div class="join-now">
+                    <a href="https://discord.gg/AMyUmbFwgq" class="join-button"><i class="fa-solid fa-user-plus"></i> Unisciti Ora</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="copyright">
+            <p>&copy; 2025 Italia Roleplay Esercito Italiano. Tutti i diritti riservati.</p>
+            <p><small>Questo server non è affiliato con l'Esercito Italiano ufficiale. Creato a scopo di intrattenimento e roleplay.</small></p>
+        </div>
+    </footer>
+    
+    <script>
+    // Dati di esempio del quiz - TUTTE LE DOMANDE
+    const allQuizData = [
+        {
+            question: "In che anno è entrata in vigore la Costituzione Italiana?",
+            options: ["1946", "1948", "1950", "1952"],
+            correctAnswer: 1
+        },
+        {
+            question: "Chi è l’autore de 'I Promessi Sposi'?",
+            options: ["Giacomo Leopardi", "Giovanni Verga", "Alessandro Manzoni", "Luigi Pirandello"],
+            correctAnswer: 2
+        },
+        {
+            question: "Qual è la capitale della Regione Sardegna?",
+            options: ["Sassari", "Nuoro", "Cagliari", "Oristano"],
+            correctAnswer: 2
+        },
+        {
+            question: "Chi ha dipinto 'La Primavera'?",
+            options: ["Leonardo da Vinci", "Botticelli", "Raffaello", "Michelangelo"],
+            correctAnswer: 1
+        },
+        {
+            question: "In quale anno l’Italia è diventata Repubblica?",
+            options: ["1945", "1946", "1947", "1948"],
+            correctAnswer: 1
+        },
+        {
+            question: "Chi fu il primo Presidente della Repubblica Italiana?",
+            options: ["Luigi Einaudi", "Alcide De Gasperi", "Enrico De Nicola", "Giovanni Gronchi"],
+            correctAnswer: 2
+        },
+        {
+            question: "Quale città italiana ospita il Vaticano?",
+            options: ["Roma", "Napoli", "Firenze", "Milano"],
+            correctAnswer: 0
+        },
+        {
+            question: "Qual è il fiume più lungo d’Italia?",
+            options: ["Arno", "Tevere", "Po", "Adige"],
+            correctAnswer: 2
+        },
+        {
+            question: "Chi ha scritto 'L’Infinito'?",
+            options: ["Gabriele D’Annunzio", "Ugo Foscolo", "Giacomo Leopardi", "Eugenio Montale"],
+            correctAnswer: 2
+        },
+        {
+            question: "Dove si trova la Torre Pendente?",
+            options: ["Firenze", "Pisa", "Lucca", "Siena"],
+            correctAnswer: 1
+        },
+        {
+            question: "In quale regione si trova il lago di Garda?",
+            options: ["Veneto", "Lombardia", "Entrambe", "Trentino-Alto Adige"],
+            correctAnswer: 2
+        },
+        {
+            question: "Chi compose l’inno nazionale italiano?",
+            options: ["Verdi", "Puccini", "Mameli e Novaro", "Rossini"],
+            correctAnswer: 2
+        },
+        {
+            question: "Chi fu il fondatore dell’Impero Romano?",
+            options: ["Romolo", "Augusto", "Cesare", "Nerone"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è il più grande vulcano attivo d’Europa?",
+            options: ["Vesuvio", "Stromboli", "Etna", "Vulcano"],
+            correctAnswer: 2
+        },
+        {
+            question: "In quale anno è avvenuta l’Unità d’Italia?",
+            options: ["1848", "1859", "1861", "1870"],
+            correctAnswer: 2
+        },
+        {
+            question: "Chi è l’autore della Divina Commedia?",
+            options: ["Petrarca", "Boccaccio", "Dante Alighieri", "Manzoni"],
+            correctAnswer: 2
+        },
+        {
+            question: "Qual è la più alta montagna d’Italia?",
+            options: ["Monte Rosa", "Gran Paradiso", "Monte Bianco", "Cervino"],
+            correctAnswer: 2
+        },
+        {
+            question: "Dove si trova la Reggia di Caserta?",
+            options: ["Napoli", "Caserta", "Salerno", "Benevento"],
+            correctAnswer: 1
+        },
+        {
+            question: "Chi è il fondatore della città di Roma secondo la leggenda?",
+            options: ["Remo", "Romolo", "Numa Pompilio", "Tullo Ostilio"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è il mare che bagna la Sicilia a nord?",
+            options: ["Tirreno", "Ionio", "Adriatico", "Ligure"],
+            correctAnswer: 0
+        },
+
+        // --- EDUCAZIONE CIVICA E COSTITUZIONE (20) ---
+        {
+            question: "Quanti sono gli articoli della Costituzione Italiana?",
+            options: ["120", "134", "139", "150"],
+            correctAnswer: 2
+        },
+        {
+            question: "Chi elegge il Presidente della Repubblica?",
+            options: ["Il Parlamento in seduta comune", "Il popolo", "Il Governo", "La Corte Costituzionale"],
+            correctAnswer: 0
+        },
+        {
+            question: "La sovranità appartiene:",
+            options: ["Al Governo", "Al Parlamento", "Al popolo", "Al Presidente della Repubblica"],
+            correctAnswer: 2
+        },
+        {
+            question: "Quale tra questi è un organo costituzionale?",
+            options: ["Ministero dell’Interno", "Corte Costituzionale", "Guardia di Finanza", "Esercito Italiano"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quanti sono i giudici della Corte Costituzionale?",
+            options: ["12", "15", "18", "20"],
+            correctAnswer: 1
+        },
+        {
+            question: "Chi nomina il Presidente del Consiglio?",
+            options: ["Il Parlamento", "Il Presidente della Repubblica", "Il popolo", "Il Senato"],
+            correctAnswer: 1
+        },
+        {
+            question: "La bandiera italiana è formata da:",
+            options: ["Rosso, bianco e verde", "Verde, bianco e rosso", "Blu, bianco e rosso", "Verde, rosso e bianco"],
+            correctAnswer: 1
+        },
+        {
+            question: "In Italia il potere legislativo spetta:",
+            options: ["Al Parlamento", "Al Governo", "Alla Magistratura", "Al Presidente della Repubblica"],
+            correctAnswer: 0
+        },
+        {
+            question: "Qual è l’età minima per votare alla Camera dei Deputati?",
+            options: ["16 anni", "18 anni", "21 anni", "25 anni"],
+            correctAnswer: 1
+        },
+        {
+            question: "Chi è il Capo delle Forze Armate italiane?",
+            options: ["Il Ministro della Difesa", "Il Presidente della Repubblica", "Il Presidente del Consiglio", "Il Capo di Stato Maggiore"],
+            correctAnswer: 1
+        },
+        {
+            question: "La pena di morte in Italia è:",
+            options: ["Abolita", "In vigore solo in guerra", "Prevista per gravi reati", "Sospesa"],
+            correctAnswer: 0
+        },
+        {
+            question: "Il Senato della Repubblica ha sede a:",
+            options: ["Palazzo Montecitorio", "Palazzo Madama", "Palazzo Chigi", "Palazzo Vecchio"],
+            correctAnswer: 1
+        },
+        {
+            question: "Chi promulga le leggi?",
+            options: ["Il Parlamento", "Il Presidente della Repubblica", "Il Presidente del Consiglio", "La Corte Costituzionale"],
+            correctAnswer: 1
+        },
+        {
+            question: "In quale anno è stata approvata la Costituzione?",
+            options: ["1946", "1947", "1948", "1950"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il suffragio universale in Italia è:",
+            options: ["Riservato agli uomini", "Per tutti i cittadini maggiorenni", "Solo per i lavoratori", "Limitato ai residenti"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il potere giudiziario spetta:",
+            options: ["Ai giudici", "Al Parlamento", "Al Governo", "Al popolo"],
+            correctAnswer: 0
+        },
+        {
+            question: "La Costituzione italiana è:",
+            options: ["Breve e flessibile", "Lunga e rigida", "Lunga e flessibile", "Breve e rigida"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quanti sono i deputati della Camera?",
+            options: ["400", "500", "600", "630"],
+            correctAnswer: 0
+        },
+        {
+            question: "Quanti sono i senatori elettivi?",
+            options: ["100", "200", "300", "400"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il Tricolore italiano fu adottato per la prima volta nel:",
+            options: ["1797", "1848", "1861", "1870"],
+            correctAnswer: 0
+        },
+
+        // --- GRAMMATICA ITALIANA (20) ---
+        {
+            question: "Qual è il plurale di 'braccio' nel significato anatomico?",
+            options: ["Bracci", "Braccia", "Braccii", "Braccie"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è la forma corretta del congiuntivo presente di 'avere' alla terza persona singolare?",
+            options: ["Avesse", "Abbia", "Ha", "Avrà"],
+            correctAnswer: 1
+        },
+        {
+            question: "Individua l’avverbio nella frase: 'Corriamo velocemente verso casa.'",
+            options: ["Corriamo", "Velocemente", "Verso", "Casa"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quale delle seguenti frasi è corretta?",
+            options: ["Gli ho detto la verità.", "Li ho detto la verità.", "Le ho detto la verità (a un uomo).", "A lui gli ho detto la verità."],
+            correctAnswer: 0
+        },
+        {
+            question: "Il participio passato di 'cuocere' è:",
+            options: ["Cotto", "Cuocuto", "Cuociuto", "Cocito"],
+            correctAnswer: 0
+        },
+        {
+            question: "Individua il soggetto nella frase: 'Mi piacciono le mele verdi.'",
+            options: ["Mi", "Piacciono", "Mele", "Le mele verdi"],
+            correctAnswer: 3
+        },
+        {
+            question: "Qual è la forma corretta del plurale di 'uovo'?",
+            options: ["Uovi", "Uova", "Uove", "Uov"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il complemento di causa risponde alla domanda:",
+            options: ["Perché?", "Come?", "Quando?", "Dove?"],
+            correctAnswer: 0
+        },
+        {
+            question: "Nella frase 'Marco è più alto di Luca', 'di Luca' è:",
+            options: ["Complemento di specificazione", "Complemento di paragone", "Complemento di termine", "Complemento oggetto"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quale tra questi è un sinonimo di 'celerità'?",
+            options: ["Lentezza", "Velocità", "Forza", "Agio"],
+            correctAnswer: 1
+        },
+        {
+            question: "Nella frase 'Spero che tu venga', il verbo 'venga' è al:",
+            options: ["Indicativo", "Congiuntivo", "Condizionale", "Imperativo"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quale frase contiene un errore?",
+            options: ["A me mi piace.", "Mi piace.", "A me piace.", "Tutte corrette"],
+            correctAnswer: 0
+        },
+        {
+            question: "‘Ognuno’ è:",
+            options: ["Aggettivo", "Pronome indefinito", "Avverbio", "Nome comune"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il contrario di 'ostinato' è:",
+            options: ["Testardo", "Arrendevole", "Tenace", "Caparbio"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è il superlativo assoluto di 'buono'?",
+            options: ["Più buono", "Buonissimo", "Ottimo", "Migliore"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il plurale di 'dito' è:",
+            options: ["Diti", "Dita", "Dite", "Ditti"],
+            correctAnswer: 1
+        },
+        {
+            question: "Nella frase 'Ho visto correre i bambini', 'correre' è:",
+            options: ["Sostantivo", "Verbo all’infinito", "Aggettivo", "Avverbio"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il verbo 'produrre' al passato remoto, prima persona singolare è:",
+            options: ["Produssi", "Produsse", "Prodotto", "Producei"],
+            correctAnswer: 0
+        },
+        {
+            question: "Il plurale di 'valigia' è:",
+            options: ["Valigge", "Valigie", "Valigia", "Valiggie"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quale frase è corretta?",
+            options: ["Dopo che avrò finito, uscirò.", "Dopo che ho finito, uscirò.", "Dopo che finisco, uscirò.", "Dopo che finirò, uscirò."],
+            correctAnswer: 0
+        },
+
+        // --- LOGICA (20) ---
+        {
+            question: "Se tutti i soldati sono uomini e alcuni uomini sono alti, possiamo dire che:",
+            options: ["Tutti i soldati sono alti", "Alcuni soldati sono alti", "Alcuni uomini non sono soldati", "Tutti gli uomini sono soldati"],
+            correctAnswer: 2
+        },
+        {
+            question: "Completa la serie: 2, 4, 8, 16, ...",
+            options: ["18", "24", "30", "32"],
+            correctAnswer: 3
+        },
+        {
+            question: "Se 5 operai costruiscono un muro in 10 giorni, quanti giorni servono a 10 operai?",
+            options: ["5", "10", "15", "20"],
+            correctAnswer: 0
+        },
+        {
+            question: "Individua l’intruso: cane, gatto, cavallo, carota.",
+            options: ["Cane", "Gatto", "Cavallo", "Carota"],
+            correctAnswer: 3
+        },
+        {
+            question: "Se un treno parte alle 14:45 e impiega 2 ore e 35 minuti, a che ora arriva?",
+            options: ["17:15", "17:20", "17:30", "17:10"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è il numero mancante nella sequenza: 3, 6, 9, 12, ?, 18",
+            options: ["13", "14", "15", "16"],
+            correctAnswer: 2
+        },
+        {
+            question: "Se oggi è martedì, che giorno sarà tra 9 giorni?",
+            options: ["Giovedì", "Venerdì", "Mercoledì", "Giovedì della prossima settimana"],
+            correctAnswer: 0
+        },
+        {
+            question: "Quale numero completa la serie: 1, 4, 9, 16, 25, ...",
+            options: ["30", "35", "36", "40"],
+            correctAnswer: 2
+        },
+        {
+            question: "Se A = 1, B = 2, Z = 26, quanto vale la parola 'ESE'",
+            options: ["30", "31", "32", "33"],
+            correctAnswer: 2
+        },
+        {
+            question: "L’inverso logico di 'tutti gli uomini sono mortali' è:",
+            options: ["Nessun uomo è mortale", "Alcuni uomini non sono mortali", "Tutti gli uomini sono immortali", "Alcuni uomini sono mortali"],
+            correctAnswer: 1
+        },
+        {
+            question: "Se un quadrato ha il lato di 4 cm, qual è la sua area?",
+            options: ["8", "12", "16", "20"],
+            correctAnswer: 2
+        },
+        {
+            question: "Individua la parola che non appartiene al gruppo: primavera, estate, sole, autunno.",
+            options: ["Primavera", "Estate", "Sole", "Autunno"],
+            correctAnswer: 2
+        },
+        {
+            question: "Se Maria è più alta di Anna e Anna è più alta di Giulia, chi è la più bassa?",
+            options: ["Maria", "Anna", "Giulia", "Non si può dire"],
+            correctAnswer: 2
+        },
+        {
+            question: "Se oggi piove e domani no, quale affermazione è vera?",
+            options: ["Domani pioverà", "Domani sarà asciutto", "Oggi è asciutto", "Piove sempre"],
+            correctAnswer: 1
+        },
+        {
+            question: "Se 9 + 3 = 12 e 9 × 3 = 27, quanto vale 9³?",
+            options: ["18", "27", "81", "729"],
+            correctAnswer: 3
+        },
+        {
+            question: "Se due orologi segnano ore diverse, quale è giusto?",
+            options: ["Il primo", "Il secondo", "Entrambi", "Nessuno dei due senza confronto"],
+            correctAnswer: 3
+        },
+        {
+            question: "In un gruppo di 10 persone, ognuno stringe la mano a tutti gli altri. Quante strette di mano totali avvengono?",
+            options: ["45", "50", "55", "60"],
+            correctAnswer: 0
+        },
+        {
+            question: "Quale numero completa la sequenza: 5, 10, 20, 40, ?",
+            options: ["50", "60", "70", "80"],
+            correctAnswer: 3
+        },
+        {
+            question: "Un triangolo ha lati 3, 4 e 5: è un triangolo...",
+            options: ["Equilatero", "Isoscele", "Scaleno rettangolo", "Scaleno ottusangolo"],
+            correctAnswer: 2
+        },
+        {
+            question: "Se 'soldato' sta a 'esercito' come 'studente' sta a:",
+            options: ["Università", "Maestro", "Scuola", "Classe"],
+            correctAnswer: 2
+        },
+
+        // --- SCIENZE (20) ---
+        {
+            question: "Qual è la formula chimica dell’acqua?",
+            options: ["H2O", "CO2", "O2", "H2"],
+            correctAnswer: 0
+        },
+        {
+            question: "Quale pianeta è più vicino al Sole?",
+            options: ["Venere", "Mercurio", "Terra", "Marte"],
+            correctAnswer: 1
+        },
+        {
+            question: "L’atomo è composto da:",
+            options: ["Elettroni, protoni e neutroni", "Solo protoni", "Solo elettroni", "Molecole"],
+            correctAnswer: 0
+        },
+        {
+            question: "Chi formulò la legge di gravitazione universale?",
+            options: ["Galileo Galilei", "Isaac Newton", "Albert Einstein", "Keplero"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è il gruppo sanguigno universale donatore?",
+            options: ["A", "B", "AB", "0"],
+            correctAnswer: 3
+        },
+        {
+            question: "Quale organo del corpo umano produce l’insulina?",
+            options: ["Fegato", "Pancreas", "Rene", "Milza"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è la principale fonte di energia per la Terra?",
+            options: ["Il Sole", "La Luna", "Il vento", "Il calore interno terrestre"],
+            correctAnswer: 0
+        },
+        {
+            question: "Il cervello umano è composto principalmente da:",
+            options: ["Muscoli", "Neuroni", "Cartilagini", "Sangue"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il DNA si trova:",
+            options: ["Nel nucleo cellulare", "Nel citoplasma", "Nel lisosoma", "Nei ribosomi"],
+            correctAnswer: 0
+        },
+        {
+            question: "Qual è la velocità della luce nel vuoto?",
+            options: ["3.000 km/s", "30.000 km/s", "300.000 km/s", "3.000.000 km/s"],
+            correctAnswer: 2
+        },
+        {
+            question: "Qual è l’unità di misura della forza?",
+            options: ["Watt", "Newton", "Pascal", "Joule"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è il gas più abbondante nell’atmosfera terrestre?",
+            options: ["Ossigeno", "Azoto", "Anidride carbonica", "Argon"],
+            correctAnswer: 1
+        },
+        {
+            question: "Che tipo di sangue può ricevere un individuo di gruppo AB?",
+            options: ["Solo AB", "A e B", "0", "Tutti i gruppi"],
+            correctAnswer: 3
+        },
+        {
+            question: "Quale ghiandola regola il metabolismo?",
+            options: ["Ipofisi", "Tiroide", "Surrene", "Pineale"],
+            correctAnswer: 1
+        },
+        {
+            question: "Qual è la formula chimica dell’anidride carbonica?",
+            options: ["CO", "CO2", "C2O", "C2O2"],
+            correctAnswer: 1
+        },
+        {
+            question: "Quale tra i seguenti è un metallo?",
+            options: ["Zolfo", "Ferro", "Ossigeno", "Cloro"],
+            correctAnswer: 1
+        },
+        {
+            question: "L’acqua bolle a 100°C a quale pressione?",
+            options: ["1 atmosfera", "2 atmosfere", "0,5 atmosfera", "Variabile"],
+            correctAnswer: 0
+        },
+        {
+            question: "Quale tra questi è un pianeta gassoso?",
+            options: ["Terra", "Marte", "Giove", "Venere"],
+            correctAnswer: 2
+        },
+        {
+            question: "Il simbolo chimico del sodio è:",
+            options: ["S", "Na", "So", "Sd"],
+            correctAnswer: 1
+        },
+        {
+            question: "Il cuore umano ha quante cavità?",
+            options: ["2", "3", "4", "5"],
+            correctAnswer: 2
+        },
+    ];
+
+    // Funzione per selezionare randomicamente 20 domande
+        function getRandomQuestions(allQuestions, numberOfQuestions = 20) {
+            // Crea una copia dell'array per non modificare l'originale
+            const shuffled = [...allQuestions];
+            
+            // Algoritmo Fisher-Yates per mescolare l'array
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            
+            // Restituisce solo il numero di domande richiesto
+            return shuffled.slice(0, numberOfQuestions);
+        }
+
+        // Variabile globale per le domande del quiz (sarÃ  popolata con 20 domande casuali)
+        let quizData = [];
+
+        // Variabili globali
+        let currentQuestion = 0;
+        let userAnswers = [];
+        let timerInterval;
+        let timeLeft = 20 * 60; // 20 minuti in secondi
+        let userData = {
+            fullName: "",
+            birthDate: "",
+            phoneNumber: ""
+        };
+
+        // Contatore cambi pagina
+        let visibilityChangeCount = 0;
+
+        // URL del webhook Discord (sostituire con l'URL reale)
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1426696294071668796/Pz06mfLET4cHm_v8vVGTB26zwWVzmGJrGSMGm2NLCHbAwu4Dr1Ytsd3xZUUqYSUWWzi6";
+
+        // DOM elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // INIZIALIZZA LE DOMANDE CASUALI ALL'AVVIO
+            quizData = getRandomQuestions(allQuizData, 30);
+            console.log('Domande selezionate:', quizData.length);
+            
+            // Mostra direttamente il form di registrazione
+            document.getElementById('quiz-registration').classList.remove('hidden');
+            document.getElementById('quiz-registration').classList.add('active');
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+
+            // Controlla se l'utente ha cambiato pagina durante il quiz
+            document.addEventListener("visibilitychange", function () {
+                if (document.hidden) {
+                    visibilityChangeCount++;
+                    console.log("Scheda non attiva. Conteggio:", visibilityChangeCount);
+                }
+            });
+            
+            // Elementi del modulo di registrazione
+            const registrationForm = document.getElementById('registration-form');
+            const quizRegistration = document.getElementById('quiz-registration');
+            
+            // Elementi del quiz
+            const quizContainer = document.getElementById('quiz-container');
+            const questionText = document.getElementById('question-text');
+            const questionImageContainer = document.getElementById('question-image-container');
+            const questionImage = document.getElementById('question-image');
+            const currentQuestionElement = document.getElementById('current-question');
+            const totalQuestionsElement = document.getElementById('total-questions');
+            const timerElement = document.getElementById('timer');
+            
+            // Opzioni di risposta
+            const option1Text = document.getElementById('option1-text');
+            const option2Text = document.getElementById('option2-text');
+            const option3Text = document.getElementById('option3-text');
+            const option4Text = document.getElementById('option4-text');
+            
+            // Bottoni di navigazione
+            const prevButton = document.getElementById('prev-question');
+            const nextButton = document.getElementById('next-question');
+            const submitButton = document.getElementById('submit-quiz');
+            
+            // Elementi del risultato
+            const quizResult = document.getElementById('quiz-result');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Inizializzazione del quiz - AGGIORNA IL TOTALE DELLE DOMANDE
+            totalQuestionsElement.textContent = quizData.length;
+            
+            // Event Listeners
+            registrationForm.addEventListener('submit', startQuiz);
+            prevButton.addEventListener('click', goToPreviousQuestion);
+            nextButton.addEventListener('click', goToNextQuestion);
+            submitButton.addEventListener('click', submitQuiz);
+            
+            // Aggiunge event listeners per le opzioni radio
+            const radioOptions = document.querySelectorAll('input[name="answer"]');
+            radioOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    saveCurrentAnswer();
+                });
+            });
+            
+            // Funzione per iniziare il login Discord
+            function initiateDiscordLogin() {
+                const oauth2Url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=token&scope=identify`;
+                window.location.href = oauth2Url;
+            }
+
+            // Funzione per estrarre il token dall'URL dopo l'autorizzazione
+            function checkForDiscordToken() {
+                const fragment = new URLSearchParams(window.location.hash.slice(1));
+                const accessToken = fragment.get('access_token');
+                
+                if (accessToken) {
+                    // Rimuovi il token dall'URL per sicurezza
+                    history.pushState("", document.title, window.location.pathname + window.location.search);
+                    // Ottieni le informazioni dell'utente da Discord
+                    fetchDiscordUserInfo(accessToken);
+                }
+            }
+
+            // Funzione per ottenere i dati dell'utente da Discord API
+            async function fetchDiscordUserInfo(token) {
+                try {
+                    const response = await fetch(`${DISCORD_API_ENDPOINT}/users/@me`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        discordUserData = await response.json();
+                        
+                        // Dopo aver ottenuto i dati Discord, passa direttamente alla registrazione
+                        showRegistrationForm();
+                        
+                        // Aggiorna l'interfaccia per mostrare che l'utente Ã¨ connesso con Discord
+                        const discordInfoHtml = `
+                            <div class="discord-user-connected">
+                                <div class="user-info-container">
+                                    <img src="${getDiscordAvatar()}" alt="Avatar Discord" class="discord-avatar">
+                                    <span class="discord-username">Connesso come: ${discordUserData.username}</span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Inserisci le informazioni Discord prima del form di registrazione
+                        const registrationForm = document.querySelector('.registration-form');
+                        registrationForm.insertAdjacentHTML('beforebegin', discordInfoHtml);
+                    } else {
+                        console.error('Errore nel recupero delle informazioni utente da Discord');
+                        alert('Si Ã¨ verificato un errore durante l\'accesso con Discord. Riprova.');
+                    }
+                } catch (error) {
+                    console.error('Errore nella richiesta all\'API Discord:', error);
+                    alert('Si Ã¨ verificato un errore durante l\'accesso con Discord. Riprova.');
+                }
+            }
+
+            // Funzione per ottenere l'URL dell'avatar Discord
+            function getDiscordAvatar() {
+                if (discordUserData && discordUserData.avatar) {
+                    return `https://cdn.discordapp.com/avatars/${discordUserData.id}/${discordUserData.avatar}.png`;
+                }
+                return '/api/placeholder/100/100'; // Placeholder se non c'Ã¨ avatar
+            }
+
+            // Funzione per mostrare il modulo di registrazione dopo l'autenticazione Discord
+            function showRegistrationForm() {
+                // Nascondi la sezione di autenticazione Discord
+                document.getElementById('discord-auth').classList.add('hidden');
+                document.getElementById('discord-auth').classList.remove('active');
+                
+                // Mostra il modulo di registrazione
+                document.getElementById('quiz-registration').classList.remove('hidden');
+                document.getElementById('quiz-registration').classList.add('active');
+                
+                // Aggiungi una nota informativa che i dati Discord verranno inviati
+                const noteHtml = `
+                    <div class="discord-note">
+                        <p><small>I tuoi dati Discord (username e ID) verranno registrati insieme ai risultati del test.</small></p>
+                        <p><small><strong>Domande del test: ${quizData.length} selezionate casualmente</strong></small></p>
+                    </div>
+                `;
+                document.querySelector('.registration-form').insertAdjacentHTML('beforeend', noteHtml);
+            }
+            
+            // Funzione per iniziare il quiz
+            function startQuiz(e) {
+                e.preventDefault();
+                
+                // Salva i dati dell'utente
+                userData.fullName = document.getElementById('fullName').value;
+                userData.birthDate = document.getElementById('birthDate').value;
+                userData.phoneNumber = document.getElementById('phoneNumber').value;
+                
+                // Inizializza le risposte dell'utente
+                userAnswers = Array(quizData.length).fill(null);
+                
+                // Nascondi il modulo di registrazione e mostra il quiz
+                quizRegistration.classList.remove('active');
+                quizRegistration.classList.add('hidden');
+                quizContainer.classList.remove('hidden');
+                quizContainer.classList.add('active');
+                
+                // Carica la prima domanda
+                loadQuestion(0);
+                
+                // Avvia il timer
+                startTimer();
+            }
+            
+            // Funzione per caricare una domanda
+            function loadQuestion(index) {
+                const question = quizData[index];
+                questionText.textContent = question.question;
+                
+                // Gestisci l'immagine della domanda
+                if (question.image && question.image.trim() !== "") {
+                    questionImage.src = question.image;
+                    questionImage.onerror = function() {
+                        questionImageContainer.classList.add('hidden');
+                    };
+                    questionImageContainer.classList.remove('hidden');
+                } else {
+                    questionImageContainer.classList.add('hidden');
+                }
+                
+                // Imposta le opzioni di risposta
+                option1Text.textContent = question.options[0];
+                option2Text.textContent = question.options[1];
+                option3Text.textContent = question.options[2];
+                option4Text.textContent = question.options[3];
+                
+                // Aggiorna l'indicatore del numero di domanda corrente
+                currentQuestionElement.textContent = index + 1;
+                
+                // Carica la risposta salvata (se presente)
+                const radioButtons = document.querySelectorAll('input[name="answer"]');
+                radioButtons.forEach(radio => radio.checked = false);
+                
+                if (userAnswers[index] !== null) {
+                    radioButtons[userAnswers[index]].checked = true;
+                }
+                
+                // Gestisci la visibilitÃ  dei pulsanti di navigazione
+                prevButton.style.visibility = index === 0 ? 'hidden' : 'visible';
+                nextButton.style.visibility = index === quizData.length - 1 ? 'hidden' : 'visible';
+                submitButton.style.display = index === quizData.length - 1 ? 'block' : 'none';
+            }
+            
+            // Funzione per andare alla domanda precedente
+            function goToPreviousQuestion() {
+                saveCurrentAnswer();
+                if (currentQuestion > 0) {
+                    currentQuestion--;
+                    loadQuestion(currentQuestion);
+                }
+            }
+            
+            // Funzione per andare alla domanda successiva
+            function goToNextQuestion() {
+                saveCurrentAnswer();
+                if (currentQuestion < quizData.length - 1) {
+                    currentQuestion++;
+                    loadQuestion(currentQuestion);
+                }
+            }
+            
+            // Funzione per salvare la risposta corrente
+            function saveCurrentAnswer() {
+                const selectedOption = document.querySelector('input[name="answer"]:checked');
+                if (selectedOption) {
+                    userAnswers[currentQuestion] = parseInt(selectedOption.value);
+                }
+            }
+            
+            // Funzione per avviare il timer
+            function startTimer() {
+                timerInterval = setInterval(function() {
+                    timeLeft--;
+                    
+                    // Formatta il tempo rimanente
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    // Applica stili diversi in base al tempo rimanente
+                    if (timeLeft <= 300 && timeLeft > 60) { // meno di 5 minuti
+                        timerElement.classList.add('timer-warning');
+                    } else if (timeLeft <= 60) { // meno di 1 minuto
+                        timerElement.classList.remove('timer-warning');
+                        timerElement.classList.add('timer-danger');
+                    }
+                    
+                    // Se il tempo Ã¨ scaduto, termina il quiz
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        submitQuiz();
+                    }
+                }, 1000);
+            }
+            
+            // Funzione per valutare le risposte
+            function evaluateAnswers() {
+                let correctAnswers = 0;
+                let incorrectAnswers = 0;
+                let wrongQuestions = [];
+                
+                quizData.forEach((question, index) => {
+                    const userAnswer = userAnswers[index] === null ? -1 : userAnswers[index];
+                    
+                    if (userAnswer === question.correctAnswer) {
+                        correctAnswers++;
+                    } else {
+                        incorrectAnswers++;
+                        
+                        // Salva le domande sbagliate per il webhook
+                        wrongQuestions.push({
+                            question: question.question,
+                            userAnswer: userAnswer === -1 ? "Nessuna risposta" : question.options[userAnswer],
+                            correctAnswer: question.options[question.correctAnswer]
+                        });
+                    }
+                });
+                
+                return {
+                    correct: correctAnswers,
+                    incorrect: incorrectAnswers,
+                    wrongQuestions: wrongQuestions
+                };
+            }
+            
+            // Funzione per inviare i risultati tramite webhook
+            async function sendResultsToDiscord(results) {
+                try {
+                    const wrongQuestionsFormatted = results.wrongQuestions.map((item, index) => {
+                        return `**Domanda ${index + 1}:** ${item.question}\n` +
+                            `**Risposta data:** ${item.userAnswer}\n` +
+                            `**Risposta corretta:** ${item.correctAnswer}\n`;
+                    }).join('\n');
+                    
+                    // Crea l'embed con i dati Discord sempre inclusi
+                    const payload = {
+                        embeds: [{
+                            title: `Risultati Quiz - ${userData.fullName}`,
+                            color: 3447003, // Blu
+                            fields: [
+                                {
+                                    name: "Dati Discord",
+                                    value: `**Username:** ${discordUserData.username}\n**ID Discord:** ${discordUserData.id}`,
+                                    inline: false
+                                },
+                                {
+                                    name: "Comportamento Utente",
+                                    value: `**Cambi di scheda/minimizzazione:** ${visibilityChangeCount}`,
+                                    inline: false
+                                },
+                                {
+                                    name: "Dati Utente",
+                                    value: `**Nome:** ${userData.fullName}\n**Data di Nascita:** ${userData.birthDate}\n**Telefono:** ${userData.phoneNumber}`,
+                                    inline: false
+                                },
+                                {
+                                    name: "Risultati",
+                                    value: `**Risposte Corrette:** ${results.correct}\n**Risposte Errate:** ${results.incorrect}\n**Punteggio:** ${results.correct}/${quizData.length}\n**Domande totali disponibili:** ${allQuizData.length}`,
+                                    inline: false
+                                }
+                            ],
+                            timestamp: new Date().toISOString()
+                        }]
+                    };
+                    
+                    // Aggiungi le domande sbagliate se ce ne sono
+                    if (results.wrongQuestions.length > 0) {
+                        payload.embeds.push({
+                            title: "Domande Sbagliate",
+                            color: 15158332, // Rosso
+                            description: wrongQuestionsFormatted,
+                            timestamp: new Date().toISOString()
+                        });
+                    }
+                    
+                    const response = await fetch(DISCORD_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    return response.ok;
+                } catch (error) {
+                    console.error("Errore nell'invio del webhook:", error);
+                    return false;
+                }
+            }
+                
+            // Funzione per terminare e inviare il quiz
+            async function submitQuiz() {
+                // Salva l'ultima risposta
+                saveCurrentAnswer();
+                
+                // Ferma il timer
+                clearInterval(timerInterval);
+                
+                // Valuta le risposte
+                const results = evaluateAnswers();
+                
+                // Nascondi il quiz
+                quizContainer.classList.remove('active');
+                quizContainer.classList.add('hidden');
+                
+                // Mostra il messaggio di risultato
+                quizResult.classList.remove('hidden');
+                quizResult.classList.add('active');
+                
+                // Mostra un messaggio di caricamento
+                successMessage.innerHTML = `
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <h3>Invio in corso...</h3>
+                    <p>Sto inviando i tuoi risultati, attendi...</p>
+                `;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                
+                // Tenta di inviare i risultati al webhook Discord
+                const webhookSuccess = await sendResultsToDiscord(results);
+                
+                // Mostra il messaggio appropriato in base al risultato dell'invio SENZA PUNTEGGIO
+                if (webhookSuccess) {
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Quiz inviato con successo!</h3>
+                        <p>Grazie per aver completato il test. I tuoi risultati sono stati registrati.</p>
+                    `;
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                } else {
+                    successMessage.style.display = 'none';
+                    errorMessage.innerHTML = `
+                        <i class="fas fa-times-circle"></i>
+                        <h3>Errore nell'invio del quiz</h3>
+                        <p>Si Ã¨ verificato un errore durante l'invio del test. Per favore, contatta l'assistenza tecnica.</p>
+                    `;
+                    errorMessage.style.display = 'block';
+                }
+            }
+        });
+
+        // Script per la protezione con password
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trova il link del test psicologico e aggiungi l'event listener
+            const minnesotaLink = document.querySelector('a[href="EI Minnesota.html"]');
+            
+            if (minnesotaLink) {
+                minnesotaLink.addEventListener('click', function(e) {
+                    e.preventDefault(); // Previene il comportamento predefinito del link
+                    
+                    // Crea il modal della password
+                    showPasswordPrompt();
+                });
+            }
+                    
+            // Funzione per mostrare il prompt della password
+            function showPasswordPrompt() {
+                // Crea l'overlay e il modal
+                const overlay = document.createElement('div');
+                overlay.className = 'password-overlay';
+                
+                const modal = document.createElement('div');
+                modal.className = 'password-modal';
+                
+                // Contenuto del modal
+                modal.innerHTML = `
+                    <div class="password-header">
+                        <h3>Area Riservata</h3>
+                        <button class="close-button">&times;</button>
+                    </div>
+                    <div class="password-content">
+                        <p>Inserisci la password per accedere al tuo Modulo Test</p>
+                        <input type="password" id="password-input" placeholder="Password">
+                        <div class="password-error" style="display: none;">Password errata</div>
+                        <button class="password-submit cta-button">Accedi</button>
+                    </div>
+                `;
+                
+                // Aggiungi il modal al DOM
+                overlay.appendChild(modal);
+                document.body.appendChild(overlay);
+                
+                // Focus automatico sull'input della password
+                setTimeout(() => {
+                    document.getElementById('password-input').focus();
+                }, 100);
+                
+                // Event Listeners per il modal
+                
+                // Chiudi modal quando si clicca sulla X
+                const closeButton = modal.querySelector('.close-button');
+                closeButton.addEventListener('click', function() {
+                    document.body.removeChild(overlay);
+                });
+                
+                // Chiudi modal quando si clicca fuori dal modal
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) {
+                        document.body.removeChild(overlay);
+                    }
+                });
+                
+                // Gestisci l'invio della password
+                const submitButton = modal.querySelector('.password-submit');
+                const passwordInput = document.getElementById('password-input');
+                const errorMessage = modal.querySelector('.password-error');
+                
+                // Funzione per verificare la password
+                function checkPassword() {
+                    // La password corretta (cambiala con quella che preferisci)
+                    const correctPassword = "MMPI2025";
+                    
+                    if (passwordInput.value === correctPassword) {
+                        // Reindirizza alla pagina se la password Ã¨ corretta
+                        window.location.href = "EI Minnesota.html";
+                    } else {
+                        // Mostra il messaggio di errore se la password Ã¨ sbagliata
+                        errorMessage.style.display = 'block';
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                }
+                
+                // Controlla la password quando si clicca sul pulsante
+                submitButton.addEventListener('click', checkPassword);
+                
+                // Controlla la password quando si preme Invio
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
